@@ -1,15 +1,18 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
-import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
-import Link from 'next/link'
-import { useAuth } from '@/hooks/auth'
+import React from 'react'
+
+
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import ApplicationLogo from '../components/ApplicationLogo'
+import AuthCard from '../components/AuthCard'
+import AuthSessionStatus from '../components/AuthSessionStatus'
+import Button from '../components/Button'
+import Input from '../components/Input'
+import InputError from '../components/InputError'
+import Label from '../components/Label'
+import GuestLayout from '../components/Layouts/GuestLayout'
+import { useAuth } from '../hooks/auth'
 
 const Login = () => {
     const router = useRouter()
@@ -59,7 +62,7 @@ const Login = () => {
                 <form onSubmit={submitForm}>
                     {/* Email Address */}
                     <div>
-                        <Label htmlFor="email">Email</Label>
+                        <Label htmlFor="email" className=''>Email</Label>
 
                         <Input
                             id="email"
@@ -76,7 +79,7 @@ const Login = () => {
 
                     {/* Password */}
                     <div className="mt-4">
-                        <Label htmlFor="password">Password</Label>
+                        <Label htmlFor="password" className=''>Password</Label>
 
                         <Input
                             id="password"
@@ -122,7 +125,7 @@ const Login = () => {
                             Forgot your password?
                         </Link>
 
-                        <Button className="ml-3">Login</Button>
+                        <Button type='button' className="ml-3">Login</Button>
                     </div>
                 </form>
             </AuthCard>

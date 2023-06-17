@@ -1,5 +1,7 @@
-import AppLayout from '@/components/Layouts/AppLayout'
+import React from 'react'
+
 import Head from 'next/head'
+import AppLayout from '../components/Layouts/AppLayout'
 
 const Dashboard = () => {
     return (

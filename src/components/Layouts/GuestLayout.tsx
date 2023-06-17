@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 
 const GuestLayout = ({ children }) => {
@@ -8,7 +9,7 @@ const GuestLayout = ({ children }) => {
             </Head>
 
             <div className="font-sans text-gray-900 antialiased">
-                {children}
+                { children }
             </div>
         </div>
     )

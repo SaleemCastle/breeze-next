@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 const Dropdown = ({
     align = 'right',
-    width = 48,
+    width = '48',
     contentClasses = 'py-1 bg-white',
     trigger,
     children,
 }) => {
-    let alignmentClasses
+    let alignmentClasses: string
 
-    switch (width) {
+    switch (width.toString()) {
         case '48':
             width = 'w-48'
             break
@@ -35,7 +35,7 @@ const Dropdown = ({
         <Menu as="div" className="relative">
             {({ open }) => (
                 <>
-                    <Menu.Button as={React.Fragment}>{trigger}</Menu.Button>
+                    <Menu.Button as={ Fragment }>{ trigger }</Menu.Button>
 
                     <Transition
                         show={open}
@@ -46,11 +46,11 @@ const Dropdown = ({
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95">
                         <div
-                            className={`absolute z-50 mt-2 ${width} rounded-md shadow-lg ${alignmentClasses}`}>
+                            className={`absolute z-50 mt-2 ${ width } rounded-md shadow-lg ${ alignmentClasses }`}>
                             <Menu.Items
-                                className={`rounded-md focus:outline-none ring-1 ring-black ring-opacity-5 ${contentClasses}`}
+                                className={`rounded-md focus:outline-none ring-1 ring-black ring-opacity-5 ${ contentClasses }`}
                                 static>
-                                {children}
+                                { children }
                             </Menu.Items>
                         </div>
                     </Transition>

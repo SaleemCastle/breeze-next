@@ -1,0 +1,3 @@
+interface IInfoSectionProps {
+    title: string
+}

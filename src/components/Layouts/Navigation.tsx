@@ -1,14 +1,16 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import Dropdown from '@/components/Dropdown'
+'use client'
+import React from 'react'
 import Link from 'next/link'
-import NavLink from '@/components/NavLink'
-import ResponsiveNavLink, {
-    ResponsiveNavButton,
-} from '@/components/ResponsiveNavLink'
-import { DropdownButton } from '@/components/DropdownLink'
-import { useAuth } from '@/hooks/auth'
+
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useAuth } from '../../hooks/auth'
+import { DropdownButton } from '../DropdownLink'
+
+import ApplicationLogo from '../ApplicationLogo'
+import Dropdown from '../Dropdown'
+import NavLink from '../NavLink'
+import ResponsiveNavLink, { ResponsiveNavButton } from '../ResponsiveNavLink'
 
 const Navigation = ({ user }) => {
     const router = useRouter()
@@ -47,7 +49,7 @@ const Navigation = ({ user }) => {
                             width="48"
                             trigger={
                                 <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
-                                    <div>{user?.name}</div>
+                                    <div>{ user?.name }</div>
 
                                     <div className="ml-1">
                                         <svg
@@ -64,7 +66,7 @@ const Navigation = ({ user }) => {
                                 </button>
                             }>
                             {/* Authentication */}
-                            <DropdownButton onClick={logout}>
+                            <DropdownButton onClick={ logout }>
                                 Logout
                             </DropdownButton>
                         </Dropdown>

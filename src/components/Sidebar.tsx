@@ -21,9 +21,7 @@ const getIcons = (tab: Tabs, active: boolean) => {
     }
 }
 
-const Sidebar = () => {
-    const router = useRouter();
-    const [currentTab, setCurrentTab] = useState(sidebarTabs[0])
+const Sidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => {
 
     return (
         <div className='py-4 min-h-screen max-w-[20%] bg-white'>
@@ -42,8 +40,11 @@ const Sidebar = () => {
                     sidebarTabs.map((tab, index) => {
                         const isTwoWordsOrMore = tab.split(' ').length > 1
                         const link = isTwoWordsOrMore ? tab.split(' ').join('_').toLowerCase() : tab.toLowerCase()
+                        const isCurrentTab = activeTab === `#${link}`
+                        
                         return (
                         <Transition
+                            key={ index }
                             show={true}
                             enter="transition-opacity duration-75"
                             enterFrom="opacity-0"
@@ -54,16 +55,14 @@ const Sidebar = () => {
                         >
                             <Link 
                                 onClick={(e) => {
-                                    e.preventDefault()
-
-                                    setCurrentTab((link as string).toLowerCase())
+                                    setActiveTab('#' + (link as string).toLowerCase())
                                 }}
-                                href={`/${ link }`} 
+                                href={`#${ link }`} 
                                 key={ index }
-                                className={`border-b-[4px]  pl-6 pr-5 pt-4 pb-2 flex flex-row gap-3 ${currentTab === link ? 'bg-blue-600 border-b-blue-800' : 'bg-white border-b-white'}`}
+                                className={`border-b-[4px]  pl-6 pr-5 pt-4 pb-2 flex flex-row gap-3 ${isCurrentTab ? 'bg-blue-600 border-b-blue-800' : 'bg-white border-b-white'}`}
                             >
-                                <span>{ getIcons(tab as Tabs, currentTab === link) }</span>
-                                <h3 className={`font-medium ${currentTab === link ? 'text-white' : 'text-black'}`}>{ tab }</h3>
+                                <span>{ getIcons(tab as Tabs, isCurrentTab) }</span>
+                                <h3 className={`font-medium ${isCurrentTab ? 'text-white' : 'text-black'}`}>{ tab }</h3>
                             </Link>
                         </Transition>
                     )})

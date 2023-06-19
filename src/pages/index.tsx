@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ import MainArea from '../components/MainArea'
 
 export default function Home() {
     const { user } = useAuth({ middleware: 'guest' })
-
+    const [currentTab, setCurrentTab] = useState('#overview')
     return (
         <>
             <Head>
@@ -17,8 +17,8 @@ export default function Home() {
             </Head>
 
             <div className='relative w-full flex flex-row'>
-                <Sidebar />
-                <MainArea />
+                <Sidebar activeTab={ currentTab } setActiveTab={ setCurrentTab }/>
+                <MainArea currentTab={ currentTab }/>
             </div>
         </>
     )

@@ -8,7 +8,7 @@ import MainArea from '../components/MainArea'
 
 
 export default function Home() {
-    const { user } = useAuth({ middleware: 'guest' })
+    // const { user } = useAuth({ middleware: 'guest' })
     const [currentTab, setCurrentTab] = useState('#overview')
     return (
         <>

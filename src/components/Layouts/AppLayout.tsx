@@ -4,7 +4,7 @@ import Navigation from './Navigation'
 
 
 const AppLayout = ({ header, children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
+    // const { user } = useAuth({ middleware: 'auth' })
 
     return (
         <div className="min-h-screen bg-gray-100">

@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillPrinter } from 'react-icons/ai'
-import { FiEdit } from 'react-icons/fi'
+import { FiColumns, FiEdit } from 'react-icons/fi'
+import { RiFilter2Fill } from 'react-icons/ri'
 
 interface ICurrentTabDetailActionBoxProps {
     icon: string
@@ -14,6 +15,8 @@ const CurrentTabDetailActionBox = ({  icon, action, containerStyles, onClick }: 
         switch(icon) {
             case 'print': return <AiFillPrinter className={ className }/>
             case 'edit': return <FiEdit className={ className }/> 
+            case 'filter': return <RiFilter2Fill className={ className }/>
+            case 'column': return <FiColumns className={ className }/>
         }
     } 
     return (

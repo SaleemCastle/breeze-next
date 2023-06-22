@@ -7,14 +7,13 @@ import PatientList from './PatientList'
 
 const MainArea = ({ currentTab }: { currentTab: string }) => {
     const renderTabDetailSection = (tab: string) => {
-        console.log(tab)
         switch(tab) {
             case Tabs.PatientList.toLowerCase() : return <PatientList />
         }
     }
     return (
         <div className='flex-grow-[4] h-screen bg-gray-100'>
-            <InfoSection title={'Saleem Castle'}/>
+            <InfoSection currentTab={ currentTab }/>
             <CurrentTabDetail currentTab={ currentTab } />
             { renderTabDetailSection(formatTabs(currentTab).substring(1)) }
         </div>

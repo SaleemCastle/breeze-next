@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import useSWR from 'swr'
-import axios from '../lib/axios'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { patientDataHeadings } from '../Constants'
 import PatientRowDetails from './PatientRowDetails'
+import { AppState } from '../store/store'
 
 const PatientList = () => {
-    const [patients, setPatients] = useState()
-    useEffect(() => {
-        axios
-            .get('/api/patients')
-            .then(res => console.log(res.data))
-            .catch(error => {
-            console.log(error)
-            })
-    }, [])
+    const patients = useSelector((state: AppState) => state.patients.patients.patients)
     return (
         <div className='px-8 py-4'>
             <div className='flex flex-row w-full items-center pl-3 gap-2 pb-3'>
@@ -24,8 +16,11 @@ const PatientList = () => {
                     ))
                 }
             </div>
-
-            <PatientRowDetails />
+            {
+                patients.map((patient: Patient) => (
+                    <PatientRowDetails key={ patient.id } info={ patient }/>
+                ))
+            }
         </div>
     )
 }

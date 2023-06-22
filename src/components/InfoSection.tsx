@@ -3,8 +3,9 @@ import { BsPersonFill } from 'react-icons/bs'
 import { BiBell } from 'react-icons/bi'
 import ActionButton from './ActionButton'
 import Searchbar from './Searchbar'
+import { formatTabs } from '../utils'
 
-const InfoSection = ({ title }: IInfoSectionProps) => {
+const InfoSection = ({ currentTab }: IInfoSectionProps) => {
     const handleClick = () => {}
     return (
         <div className='flex flex-row px-8 max-h-16 py-4 border-b justify-between'>
@@ -12,7 +13,7 @@ const InfoSection = ({ title }: IInfoSectionProps) => {
                 <span>
                     <BsPersonFill className='text-blue-700 text-2xl'/>
                 </span>
-                <h3 className='font-bold text-xl'>{ title }</h3>
+                <h3 className='font-bold text-xl capitalize'>{ formatTabs(currentTab).substring(1) }</h3>
             </div>
 
             <div className='flex flex-row gap-5'>
